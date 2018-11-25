@@ -10,7 +10,6 @@ from auxiliary import *
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'devkey'
 
-port = int(os.getenv("VCAP_APP_PORT"))
 
 @application.route("/")
 def index():
