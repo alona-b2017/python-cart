@@ -1,9 +1,5 @@
 ---
 applications:
-- name: python_cart
-  memory: 128MB
-  disk_quota: 256MB
-  buildpack: python_buildpack
-  command: python app.py
-  domain: mybluemix.net
-  host: python_cart
+ - name: python-s-cart-abasko2017
+   random-route: true
+   memory: 128M
