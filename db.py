@@ -20,11 +20,13 @@ def close():
 
 
 def register(user):
-    sql = '''INSERT INTO Users (email, password, first_name, last_name, address, city, state, zipcode) 
+     with sqlite3.connect('shopping_cart_db.db') as conn:
+            cur = conn.cursor()
+            sql = '''INSERT INTO Users (email, password, first_name, last_name, address, city, state, zipcode) 
              VALUES (?, ?, ?, ?, ?, ?, ?, ?)'''
-    with closing(conn.cursor()) as c:
-        c.execute(sql, (user.email, user.password, user.first_name, user.last_name, user.address, user.city, user.state, user.zipcode))
-        conn.commit()
+            cur.execute(sql, (user.email, user.password, user.first_name, user.last_name, user.address, user.city, user.state, user.zipcode))
+            conn.commit()
+     conn.close()
 
 def valid_login(email, password):
         con = sqlite3.connect('shopping_cart_db.db')
