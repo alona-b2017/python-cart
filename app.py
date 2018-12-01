@@ -10,6 +10,8 @@ from auxiliary import *
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'devkey'
 
+port = int(os.getenv('PORT',8000))
+
 
 @application.route("/")
 def index():
@@ -112,7 +114,10 @@ def displayCategory():
 
 
 if __name__ == "__main__":
-    application.run()
+    if os.getenv('PORT') is None:
+        application.run()
+    else:
+        application.run(host='0.0.0.0', port=port, debug=True)
                     
 
 
